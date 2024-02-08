@@ -206,34 +206,130 @@ public class ColeccionApp {
    * Lista los clientes del usuario
    */
   private void comandoListarClientes() {
-    // TODO
-  }
+    // Verificar que el usuario esté autenticado
+    if (usuario != null) {
+        // Obtener la lista de clientes del usuario autenticado
+        List<Cliente> clientes = usuario.getClientes();
+        // Mostrar los clientes
+        System.out.println("CLIENTES DEL USUARIO");
+        for (Cliente cliente : clientes) {
+            System.out.println(cliente);
+        }
+    } else {
+        System.out.println("Error: Usuario no autenticado.");
+    }
+}
+
 
   /**
    * Busca los clientes del usuario cuyo nombre de pila contiene un texto determinado
    */
   private void comandoBuscarNombre() {
-    // TODO
-  }
+    // Verificar que el usuario esté autenticado
+    if (usuario != null) {
+        // Solicitar al usuario el texto a buscar
+        System.out.print("Introduzca el nombre de pila a buscar: ");
+        String textoBusqueda = sc.nextLine();
+        // Realizar la búsqueda en la lista de clientes del usuario
+        List<Cliente> clientesEncontrados = new ArrayList<>();
+        for (Cliente cliente : usuario.getClientes()) {
+            if (cliente.getNombre().contains(textoBusqueda)) {
+                clientesEncontrados.add(cliente);
+            }
+        }
+        // Mostrar resultados de la búsqueda
+        if (!clientesEncontrados.isEmpty()) {
+            System.out.println("CLIENTES ENCONTRADOS:");
+            for (Cliente cliente : clientesEncontrados) {
+                System.out.println(cliente);
+            }
+        } else {
+            System.out.println("No se encontraron clientes con ese nombre de pila.");
+        }
+    } else {
+        System.out.println("Error: Usuario no autenticado.");
+    }
+}
 
   /**
    * Busca los clientes del usuario cuyos apellidos contienen un texto determinado
    */
   private void comandoBuscarApellidos() {
-    // TODO
-  }
+    if (usuario != null) {
+        System.out.print("Introduzca los apellidos a buscar: ");
+        String textoBusqueda = sc.nextLine();
+        List<Cliente> clientesEncontrados = new ArrayList<>();
+        for (Cliente cliente : usuario.getClientes()) {
+            if (cliente.getApellidos().contains(textoBusqueda)) {
+                clientesEncontrados.add(cliente);
+            }
+        }
+        mostrarResultadoBusqueda(clientesEncontrados);
+    } else {
+        System.out.println("Error: Usuario no autenticado.");
+    }
+}
 
   /**
    * Busca los clientes del usuario cuyos DNI es el proporcionado
    */
   private void comandoBuscarDni() {
-    // TODO
-  }
+    if (usuario != null) {
+        System.out.print("Introduzca el DNI a buscar: ");
+        String dniBusqueda = sc.nextLine();
+        Cliente clienteEncontrado = null;
+        for (Cliente cliente : usuario.getClientes()) {
+            if (cliente.getDni().equals(dniBusqueda)) {
+                clienteEncontrado = cliente;
+                break;
+            }
+        }
+        if (clienteEncontrado != null) {
+            System.out.println("CLIENTE ENCONTRADO:");
+            System.out.println(clienteEncontrado);
+        } else {
+            System.out.println("Cliente no encontrado.");
+        }
+    } else {
+        System.out.println("Error: Usuario no autenticado.");
+    }
+}
 
   /**
    * Busca los clientes del usuario por su edad
    */
   private void comandoBuscarEdad() {
-    // TODO
-  }
+    if (usuario != null) {
+        System.out.print("Introduzca la edad mínima (deje en blanco si no hay mínimo): ");
+        String entradaEdadMinima = sc.nextLine().trim();
+        int edadMinima = entradaEdadMinima.isEmpty() ? 0 : Integer.parseInt(entradaEdadMinima);
+        System.out.print("Introduzca la edad máxima (deje en blanco si no hay máximo): ");
+        String entradaEdadMaxima = sc.nextLine().trim();
+        int edadMaxima = entradaEdadMaxima.isEmpty() ? Integer.MAX_VALUE : Integer.parseInt(entradaEdadMaxima);
+        List<Cliente> clientesEncontrados = new ArrayList<>();
+        for (Cliente cliente : usuario.getClientes()) {
+            if (cliente.getEdad() >= edadMinima && cliente.getEdad() <= edadMaxima) {
+                clientesEncontrados.add(cliente);
+            }
+        }
+        mostrarResultadoBusqueda(clientesEncontrados);
+    } else {
+        System.out.println("Error: Usuario no autenticado.");
+    }
+}
+  
+  /**
+  * Muestra los resultados de una búsqueda de clientes
+  * @param clientesEncontrados Lista de clientes encontrados
+  */
+  private void mostrarResultadoBusqueda(List<Cliente> clientesEncontrados) {
+    if (!clientesEncontrados.isEmpty()) {
+        System.out.println("CLIENTES ENCONTRADOS:");
+        for (Cliente cliente : clientesEncontrados) {
+            System.out.println(cliente);
+        }
+    } else {
+        System.out.println("No se encontraron clientes.");
+    }
+}
 }

@@ -9,7 +9,7 @@ import java.util.List;
  * La clase Usuarios se encarga de almacenar y recuperar los usuarios que forman
  * el sistema.
  * 
- * @author [Tu nombre]
+ * @author [Álvaro Díaz Casaño]
  * @version 1.0
  */
 public class Usuarios {

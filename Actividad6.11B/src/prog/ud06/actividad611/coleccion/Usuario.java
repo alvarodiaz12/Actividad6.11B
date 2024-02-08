@@ -8,7 +8,7 @@ import java.util.List;
  * Un Usuario tiene un identificador único, un nombre completo, una tarjeta de
  * claves y una lista de clientes.
  * 
- * @author [Tu nombre]
+ * @author [Álvaro Díaz Casaño]
  * @version 1.0
  */
 public class Usuario {

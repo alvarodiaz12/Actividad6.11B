@@ -9,7 +9,7 @@ import java.io.Serializable;
  * en el contenedor de usuarios, como intentar agregar un usuario que ya existe
  * o intentar acceder a un usuario que no existe.
  * 
- * @author [Tu nombre]
+ * @author [Álvaro Díaz Casaño]
  * @version 1.0
  */
 public class UsuariosException extends RuntimeException implements Serializable {

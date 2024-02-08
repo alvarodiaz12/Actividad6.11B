@@ -3,7 +3,7 @@ package prog.ud06.actividad611.coleccion;
 /**
  * Un cliente de la empresa.
  * 
- * @author [Tu nombre]
+ * @author [Álvaro Díaz Casaño]
  * @version 1.0
  */
 public class Cliente implements Comparable<Cliente> {
